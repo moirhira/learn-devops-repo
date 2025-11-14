@@ -1,36 +1,20 @@
-pipeline {
-        agent any
-
-        stages {
-                stage('Hello') {
-                        steps {
-                                echo 'Pipeline is working!'
+pipeline{
+        agent any 
+        tools{
+                nodejs 'node'
+        }
+        stages{
+                stage('Install Dependencies'){
+                        steps{
+                                echo 'Install Dependencies...'
+                                sh 'npm install'
                         }
                 }
-                stage('Install Node') {
-                        steps {
-                                sh """
-                                        echo "Installing Node..."
-                                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-                                        export NVM_DIR="\$HOME/.nvm"
-                                        [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
-                                        nvm install 18
-                                        nvm use 18
-                                """
+                stage('Build Project'){
+                        steps{
+                                echo "Build project..."
+                                sh 'npm run build'
                         }
                 }
-                stage('Install Dependencies') {
-                        steps {
-                                sh """
-                                export NVM_DIR="\$HOME/.nvm"
-                                [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
-                                nvm use 18
-
-                                echo "Installing dependencies..."
-                                npm install
-                                """
-                        }
-                }
-
         }
 }
