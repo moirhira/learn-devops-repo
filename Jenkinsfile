@@ -20,12 +20,12 @@ pipeline {
                         steps{
                                 echo "Building the image..."
                                 withCredentials([usernamePassword(
-                                        credentialsId: 'github-token',
+                                        credentialsId: 'docket-repo-key',
                                         passwordVariable: 'PASS',
                                         usernameVariable: 'USER')])
                                         {
-                                                sh 'docker build -t mohamed2003/pipe-repo:1.2'
-                                                sh "echo $PASS | docker login -u ${USER} --password-stdin"
+                                                sh 'docker build -t mohamed2003/pipe-repo:1.2 . '
+                                                sh "docker login -u ${USER} -p ${PASS}"
                                                 sh 'docker push mohamed2003/pipe-repo:1.2'
                                         }
                                 
