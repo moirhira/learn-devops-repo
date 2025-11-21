@@ -16,6 +16,12 @@ pipeline {
                                 sh 'npm test'
                         }
                 }
+                stage('Build The Artifact'){
+                        steps{
+                                echo "Building the artifact..."
+                                sh "npm run build"
+                        }
+                }
 
         }
 }
