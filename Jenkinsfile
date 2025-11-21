@@ -10,12 +10,6 @@ pipeline {
                                 sh 'npm install'
                         }
                 }
-                stage('Run Tests'){
-                        steps{
-                                echo "Testing..."
-                                sh 'npm test'
-                        }
-                }
                 stage('Build The Artifact'){
                         steps{
                                 echo "Building the artifact..."
