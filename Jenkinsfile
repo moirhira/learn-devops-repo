@@ -1,4 +1,4 @@
-def gv
+def gv = null
 
 pipeline {
         agent any 

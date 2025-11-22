@@ -20,3 +20,5 @@ def buildAndDeployImage() {
                         sh 'docker push mohamed2003/pipe-repo:1.2'
                 }
 }
+
+return this
