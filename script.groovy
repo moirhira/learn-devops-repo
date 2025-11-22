@@ -9,7 +9,7 @@ def buildArtifact() {
 }
 
 def buildAndDeployImage() {
-        echo "Building the image..."
+        echo "Building the image for new branch..."
         withCredentials([usernamePassword(
                 credentialsId: 'docket-repo-key',
                 passwordVariable: 'PASS',
