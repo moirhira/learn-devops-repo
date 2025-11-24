@@ -21,6 +21,11 @@ pipeline {
                         }
                 }
                 stage('Build The Artifact'){
+                        when {
+                                expression {
+                                                BRANCH_NAME == 'main'
+                                }
+                        }
                         steps{
                                 script {
                                         gv.buildArtifact()
@@ -28,6 +33,11 @@ pipeline {
                         }
                 }
                 stage('Build The image'){
+                        when {
+                                expression {
+                                                BRANCH_NAME == 'main'
+                                }
+                        }
                         steps{
                                 script {
                                         gv.buildAndDeployImage()
